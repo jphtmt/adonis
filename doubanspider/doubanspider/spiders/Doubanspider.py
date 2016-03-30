@@ -65,7 +65,7 @@ class doubanSpider(BaseSpider):
                                           formdata = {
                                               'source':'None',
                                               'form_email':'573980664@qq.com',
-                                              'form_password':'57019764'},
+                                              'form_password':''},
                                                 callback = self.parse_page,
                                                 dont_filter = True)]
 
@@ -80,7 +80,7 @@ class doubanSpider(BaseSpider):
         print ' parse_page'
         sel = Selector(response)
        # sel.remove_namespaces()
-        answer = sel.xpath('//*[@id="db-global-nav"]/div/div[1]/ul/li[2]/a/span[1]').extract()
+        answer = sel.xpath('//*[@id="db-global-nav"]/div/div[1]/ul/li[2]/a/span[1]/text()').extract()
         item = DoubanspiderItem()
         item['loginName']=answer
         print item
